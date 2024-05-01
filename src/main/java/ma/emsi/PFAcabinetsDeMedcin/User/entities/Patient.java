@@ -1,5 +1,4 @@
-package ma.emsi.PFAcabinetsDeMedcin.entities;
-
+package ma.emsi.PFAcabinetsDeMedcin.User.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,12 +8,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Entity
 @Data
-@AllArgsConstructor @NoArgsConstructor
-public class Medcin extends UserApp{
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-
+@AllArgsConstructor
+@NoArgsConstructor
+public class Patient extends UserApp{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }

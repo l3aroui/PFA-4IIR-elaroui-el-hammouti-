@@ -1,4 +1,4 @@
-package ma.emsi.PFAcabinetsDeMedcin.entities;
+package ma.emsi.PFAcabinetsDeMedcin.User.entities;
 
 
 import jakarta.persistence.*;
