@@ -1,10 +1,7 @@
 package ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +14,9 @@ public class Medcin extends UserApp {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
+        @OneToOne
+        private Cabinet cab;
+        @OneToOne
+        private Specialite spec;
 
 }
