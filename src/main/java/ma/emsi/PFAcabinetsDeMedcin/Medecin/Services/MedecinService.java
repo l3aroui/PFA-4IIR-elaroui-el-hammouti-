@@ -4,6 +4,8 @@ import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Cabinet;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Medcin;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Repositories.CabinetRepos;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Repositories.MedcinRepos;
+import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.RendezVous;
+import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.RendezVousRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class MedecinService {
     private MedcinRepos med;
     @Autowired
     private CabinetRepos cab;
+
 
     public void addMedecin(Medcin medcin)
     {
@@ -31,5 +34,6 @@ public class MedecinService {
     {
         return med.findById(id);
     }
+
 
 }

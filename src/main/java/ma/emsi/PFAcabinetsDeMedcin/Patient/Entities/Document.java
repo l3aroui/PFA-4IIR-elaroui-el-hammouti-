@@ -14,6 +14,7 @@ public class Document {
     private Long id;
     private String type;
     private String path;
+    private String Description;
     @ManyToOne
     private DossierMedical dossierMedical;
 }
