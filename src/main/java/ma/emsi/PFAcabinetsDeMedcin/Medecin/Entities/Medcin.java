@@ -15,8 +15,8 @@ public class Medcin extends UserApp {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         @OneToOne
-        private Cabinet cab;
+        private Cabinet cabinet;
         @OneToOne
-        private Specialite spec;
+        private Specialite specialite;
 
 }
