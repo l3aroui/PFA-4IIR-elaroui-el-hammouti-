@@ -4,6 +4,7 @@ package ma.emsi.PFAcabinetsDeMedcin.Patient.services;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Medcin;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Specialite;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Repositories.MedcinRepos;
+import ma.emsi.PFAcabinetsDeMedcin.User.entities.Addresse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class PatientService {
     public List<Medcin> afficherLesMedcin(){
         return medcinRepos.findAll();
     }
-    public List<Medcin> afficherParAddresse(String addresse){
+    public List<Medcin> afficherParAddresse(Addresse addresse){
         return medcinRepos.findByAddresse(addresse);
     }
 
