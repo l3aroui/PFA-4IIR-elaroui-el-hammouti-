@@ -22,6 +22,7 @@ public class UserApp {
     private String tele;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateNais;
-    private String Addresse;
+    @OneToOne
+    private Addresse addresse;
     private String mdp;
 }
