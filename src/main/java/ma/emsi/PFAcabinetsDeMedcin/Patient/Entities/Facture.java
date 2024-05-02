@@ -1,10 +1,7 @@
 package ma.emsi.PFAcabinetsDeMedcin.Patient.Entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -22,4 +19,6 @@ public class Facture {
     private Float montantTT;
     private Date dateFact;
     private Boolean payee;
+    @OneToOne
+    private DossierMedical dossierMedical;
 }

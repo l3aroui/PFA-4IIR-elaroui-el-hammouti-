@@ -19,5 +19,7 @@ public class RendezVous {
     private Medcin medcin;
     @ManyToOne
     private Service service;
+    @OneToOne
+    private DossierMedical dossierMedical;
 
 }
