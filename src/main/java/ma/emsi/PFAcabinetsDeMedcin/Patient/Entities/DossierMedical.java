@@ -18,4 +18,8 @@ public class DossierMedical {
     private Patient patient;
     @OneToMany(mappedBy = "dossierMedical")
     private List<Document> document;
+    @OneToOne
+    private Facture facture;
+    @OneToOne
+    private RendezVous rendezVous;
 }
