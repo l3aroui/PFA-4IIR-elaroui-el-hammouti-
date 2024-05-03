@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.security.Principal;
 import java.util.Date;
 
 @Entity
@@ -17,10 +16,10 @@ public class UserApp{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomPrenom;
-
-    private String tele;
+    @Column(unique = true)
+    private String telephone;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date dateNais;
+    private Date dateNaiss;
     @OneToOne
     private Addresse addresse;
     private String password;

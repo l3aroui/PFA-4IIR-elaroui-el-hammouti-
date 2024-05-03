@@ -1,4 +1,4 @@
-package ma.emsi.PFAcabinetsDeMedcin.Patient.Services;
+package ma.emsi.PFAcabinetsDeMedcin.Patient.services;
 
 public class DocumentService {
 }

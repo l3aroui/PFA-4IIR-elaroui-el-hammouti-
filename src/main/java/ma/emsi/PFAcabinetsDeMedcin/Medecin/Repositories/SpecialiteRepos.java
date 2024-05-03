@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SpecialiteRepos extends JpaRepository<Specialite,Long> {
+    Specialite findByLibelle(String libelle);
 }

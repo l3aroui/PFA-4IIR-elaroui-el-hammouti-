@@ -14,4 +14,6 @@ public interface MedcinRepos extends JpaRepository<Medcin,Long> {
      List<Medcin> findByAddresse_CityAndAddresse_CountryAndAddresseCodePostal(String city,String contry,int codepostal);
      List<Medcin> findBySpecialite(Specialite specialite);
 
+
+
 }

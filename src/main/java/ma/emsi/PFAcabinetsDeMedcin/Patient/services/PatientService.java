@@ -37,6 +37,8 @@ public class PatientService {
     }
     public List<Medcin> afficherParSpecialite(Specialite specialite)
     {
+
         return medcinRepos.findBySpecialite(specialite);
     }
+
 }

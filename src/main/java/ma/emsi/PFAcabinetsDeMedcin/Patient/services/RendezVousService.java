@@ -1,4 +1,4 @@
-package ma.emsi.PFAcabinetsDeMedcin.Patient.Services;
+package ma.emsi.PFAcabinetsDeMedcin.Patient.services;
 
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Medcin;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.RendezVous;
