@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
-
 @Entity
 @Builder
 @Data
@@ -17,9 +15,7 @@ public class DossierMedical {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    private RendezVous rendezVous;
-    @OneToOne
-    private Facture facture;
-    @OneToMany
+    private Patient patient;
+    @OneToMany(mappedBy = "dossierMedical")
     private List<Document> document;
 }

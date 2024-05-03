@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface MedcinRepos extends JpaRepository<Medcin,Long> {
-     List<Medcin> findByNomAndPrenom(String nom,String prenom);
-     List<Medcin> findByAddresse(Addresse addresse);
+     Medcin findByNomPrenom(String nomPrenom);
+     List<Medcin> findByAddresse_CityAndAddresse_CountryAndAddresseCodePostal(String city,String contry,int codepostal);
      List<Medcin> findBySpecialite(Specialite specialite);
 
 }

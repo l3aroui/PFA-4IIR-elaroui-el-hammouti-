@@ -17,7 +17,7 @@ public class Avis {
     private Long id;
     @OneToOne
     private Medcin medcin;
-    @OneToOne
+    @ManyToOne
     private Patient patient;
     private String commentaire;
     private int point;
