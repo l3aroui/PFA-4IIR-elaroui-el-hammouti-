@@ -2,14 +2,13 @@ package ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ma.emsi.PFAcabinetsDeMedcin.User.entities.UserApp;
 
 @Entity
-@Data
+@Builder
 @AllArgsConstructor @NoArgsConstructor
+@Getter
 public class Medcin extends UserApp {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,5 +17,6 @@ public class Medcin extends UserApp {
         private Cabinet cabinet;
         @OneToOne
         private Specialite specialite;
+
 
 }

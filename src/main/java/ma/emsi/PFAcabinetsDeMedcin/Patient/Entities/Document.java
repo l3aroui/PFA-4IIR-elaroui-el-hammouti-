@@ -12,6 +12,7 @@ public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long nom;
     private String type;
     private String path;
     private String Description;

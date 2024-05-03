@@ -12,6 +12,6 @@ public class Specialite {
     @Id
     private Long id;
     @OneToOne
-    private Medcin med;
+    private Medcin medcin;
     private String libelle;
 }
