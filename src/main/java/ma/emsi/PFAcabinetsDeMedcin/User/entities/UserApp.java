@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,4 +26,6 @@ public class UserApp{
     private String password;
     @Column(unique = true)
     private String email;
+    @ManyToMany
+    private List<Role> role;
 }

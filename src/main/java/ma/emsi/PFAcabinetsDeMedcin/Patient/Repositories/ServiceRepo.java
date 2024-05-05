@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ServiceRepo extends JpaRepository<Service,Long> {
+
 }
