@@ -3,6 +3,7 @@ package ma.emsi.PFAcabinetsDeMedcin.Patient.Entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Medcin;
 
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @Builder
+@Data
 @AllArgsConstructor @NoArgsConstructor
 public class RendezVous {
     @Id
@@ -23,4 +25,7 @@ public class RendezVous {
     private Medcin medcin;
     @ManyToOne
     private Service service;
+    @OneToOne
+    private DossierMedical dossierMedical;
+    private boolean valide = false;
 }

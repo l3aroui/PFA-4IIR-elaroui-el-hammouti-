@@ -5,6 +5,7 @@ import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.DossierMedical;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.Facture;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.RendezVous;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.DossierMedicalRepo;
+import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.RendezVousRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,8 @@ import java.util.List;
 public class DossierMedicalService {
     @Autowired
     private DossierMedicalRepo Dossier;
+    @Autowired
+    private RendezVousRepo rendezVousRepo;
 
-    public void ValiderRdv(RendezVous rdv, Facture facture, List<Document> document)
-    {
-        DossierMedical dos = new DossierMedical();
-        dos.setFacture(facture);
-        dos.setDocument(document);
-        dos.setRendezVous(rdv);
-        Dossier.save(dos);
-    }
+
 }

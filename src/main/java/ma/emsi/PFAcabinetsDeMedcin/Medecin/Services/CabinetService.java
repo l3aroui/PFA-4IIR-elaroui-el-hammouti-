@@ -14,7 +14,6 @@ import java.util.Optional;
 public class CabinetService {
     @Autowired
     private CabinetRepos cabinet ;
-
     public void addCabinet(Cabinet cab)
     {
         cabinet.save(cab);
@@ -29,12 +28,5 @@ public class CabinetService {
     {
         return cabinet.findById(id);
     }
-    public void SetDisponibilite(Cabinet cab , Disponibilite disponibilite)
-    {
-        if(!cab.getDisponibilites().contains(disponibilite))
-        {
-            cab.getDisponibilites().add(disponibilite);
-            cabinet.save(cab);
-        }
-    }
+
 }

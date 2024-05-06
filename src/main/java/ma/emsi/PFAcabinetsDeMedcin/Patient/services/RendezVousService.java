@@ -1,6 +1,7 @@
-package ma.emsi.PFAcabinetsDeMedcin.Patient.services;
+package ma.emsi.PFAcabinetsDeMedcin.Patient.Services;
 
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Medcin;
+import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.Patient;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.RendezVous;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.RendezVousRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,5 @@ public class RendezVousService {
     {
         return rendezVousRepo.findAllByMedcin(med);
     }
+
 }

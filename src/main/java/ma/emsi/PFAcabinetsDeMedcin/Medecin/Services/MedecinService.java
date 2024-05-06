@@ -1,11 +1,11 @@
 package ma.emsi.PFAcabinetsDeMedcin.Medecin.Services;
 
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Cabinet;
+import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Disponibilite;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Medcin;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Repositories.CabinetRepos;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Repositories.MedcinRepos;
-import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.Patient;
-import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.RendezVous;
+import ma.emsi.PFAcabinetsDeMedcin.Patient.Entities.*;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.DossierMedicalRepo;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.PatientRepos;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.RendezVousRepo;
@@ -28,6 +28,9 @@ public class MedecinService {
     private RendezVousRepo rendezVousRepo;
     @Autowired
     private DossierMedicalRepo dossierMedicalRepo;
+    @Autowired
+    private CabinetRepos cabinetRepos;
+
 
 
     public void addMedecin(Medcin medcin)
@@ -35,19 +38,16 @@ public class MedecinService {
         med.save(medcin);
     }
 
-    public List<Medcin> getAllCabinet()
+    public Cabinet getCabinetByMedcin(Medcin medcin)
     {
-        return med.findAll();
+        return medcin.getCabinet();
     }
 
-    public Optional<Medcin> getCabinetById(Long id)
-    {
-        return med.findById(id);
-    }
 
-    public Patient GetPatientByrdv(RendezVous rendezVous)
+
+    public List<RendezVous> GetRdvsByPatient(Patient patient)
     {
-        return patientRepos.findPatientByRendezVous(rendezVous);
+        return rendezVousRepo.findAllByPatient(patient);
     }
 //    public List<Patient> getAllPatientsByMedcin(Medcin medcin){
 //         List<RendezVous> rdvs = rendezVousRepo.findAllByMedcin(medcin);
@@ -58,19 +58,40 @@ public class MedecinService {
 //         }
 //         return pts;
 //    }
-    public List<Patient> getAllPatientsValideParMedcin(Medcin medcin)
+    public List<Patient> getAllPatientsValides(Medcin medcin)
     {
         List<RendezVous> rdvs = rendezVousRepo.findAllByMedcin(medcin);
         List<Patient> pts = new ArrayList<>();
         for(RendezVous rdv : rdvs )
         {
-            if(dossierMedicalRepo.findByRendezVous(rdv) != null)
+            if(rdv.getDossierMedical() != null)
             {
                 pts.add(patientRepos.findPatientByRendezVous(rdv));
             }
 
         }
         return pts;
+    }
+
+    public void SetDisponibilite(Medcin med, Disponibilite disponibilite)
+    {
+        Cabinet cab = med.getCabinet();
+
+        if(!cab.getDisponibilites().contains(disponibilite))
+        {
+            cab.getDisponibilites().add(disponibilite);
+            cabinetRepos.save(cab);
+        }
+    }
+
+    public void ValiderRdv(RendezVous rdv, Facture facture, List<Document> document)
+    {
+        DossierMedical dos = new DossierMedical();
+        dos.setFacture(facture);
+        dos.setDocument(document);
+        dos.setRendezVous(rdv);
+        rdv.setValide(true);
+        dossierMedicalRepo.save(dos);
     }
 
 }

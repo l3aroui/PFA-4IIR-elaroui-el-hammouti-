@@ -13,5 +13,5 @@ public interface RendezVousRepo extends JpaRepository<RendezVous,Long> {
     List<RendezVous> findAllByMedcin(Medcin med);
 
 
-
+    List<RendezVous> findAllByPatient(Patient patient);
 }
