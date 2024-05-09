@@ -1,5 +1,6 @@
 package ma.emsi.PFAcabinetsDeMedcin.Medecin.Services;
 
+import ma.emsi.PFAcabinetsDeMedcin.Medecin.DTO.DashboardDTO;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Cabinet;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Disponibilite;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Medcin;
@@ -10,8 +11,12 @@ import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.DossierMedicalRepo;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.PatientRepos;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.RendezVousRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.print.attribute.standard.MediaName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +48,10 @@ public class MedecinService {
         return medcin.getCabinet();
     }
 
-
+    public Medcin getMedecinById(Long id) throws Exception {
+        return med.findById(id)
+                .orElseThrow(() -> new Exception("Medecin with id " + id + " not found"));
+    }
 
     public List<RendezVous> GetRdvsByPatient(Patient patient)
     {
@@ -73,6 +81,10 @@ public class MedecinService {
         return pts;
     }
 
+    public List<RendezVous> getAllRdvs(Medcin medcin)
+    {
+        return rendezVousRepo.findAllByMedcin(medcin);
+    }
     public void SetDisponibilite(Medcin med, Disponibilite disponibilite)
     {
         Cabinet cab = med.getCabinet();
@@ -92,6 +104,38 @@ public class MedecinService {
         dos.setRendezVous(rdv);
         rdv.setValide(true);
         dossierMedicalRepo.save(dos);
+    }
+
+    public Float getRevenueByMedecin(Medcin medcin)
+    {
+        List<RendezVous> rdvs = rendezVousRepo.findAllByMedcin(medcin);
+        Float tt = (float) 0;
+
+        for(RendezVous rdv : rdvs )
+        {
+            if(rdv.getDossierMedical() != null)
+            {
+                tt += rdv.getDossierMedical().getFacture().getMontant();
+            }
+
+        }
+        return tt;
+    }
+    public List<Disponibilite> getAllDisponibiliteByMedecin(Medcin medecin)
+    {
+        Cabinet cabinet = medecin.getCabinet();
+        return cabinet.getDisponibilites();
+
+    }
+
+    public DashboardDTO getDashboard(Medcin medcin) throws Exception
+    {
+        int NmbrPatient = this.getAllPatientsValides(medcin).size();
+        int NmbrRdv = this.getAllRdvs(medcin).size();
+        float revenue = this.getRevenueByMedecin(medcin);
+        DashboardDTO dashboardDTO = new DashboardDTO(revenue,NmbrRdv,NmbrPatient);
+        return dashboardDTO;
+
     }
 
 }

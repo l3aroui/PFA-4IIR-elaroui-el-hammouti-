@@ -1,9 +1,7 @@
 package ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,10 +16,10 @@ public class Disponibilite {
     private Long id;
     @OneToMany
     private List<Cabinet> cabs;
-    @JsonFormat(pattern="dd", timezone="GMT+1")
-    private Date Jour;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date DateOuverture;
     @JsonFormat(pattern="HH:mm", timezone="GMT+1")
-    private Date DateOuverture;//Exemple 8AM
+    private Date HeureOuverture;//Exemple 8AM
     @JsonFormat(pattern="HH:mm", timezone="GMT+1")
-    private Date DateFermeture;//Exemple 16PM
+    private Date HeureFermeture;//Exemple 16PM
 }
