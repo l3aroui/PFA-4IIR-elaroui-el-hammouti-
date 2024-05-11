@@ -17,6 +17,4 @@ public class Medcin extends UserApp {
         private Cabinet cabinet;
         @OneToOne
         private Specialite specialite;
-
-
 }

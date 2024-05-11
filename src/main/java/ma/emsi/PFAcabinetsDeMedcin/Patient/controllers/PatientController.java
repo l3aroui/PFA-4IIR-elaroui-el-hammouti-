@@ -1,24 +1,22 @@
 package ma.emsi.PFAcabinetsDeMedcin.Patient.controllers;
 
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Medcin;
-import ma.emsi.PFAcabinetsDeMedcin.Patient.services.PatientService;
+import ma.emsi.PFAcabinetsDeMedcin.Patient.services.implemetation.PatientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/patient")
 public class PatientController {
 
-
-    private final PatientService patientService;
-
+    private final PatientServiceImpl patientService;
 
     @Autowired
-    public PatientController(PatientService patientService) {
+    public PatientController(PatientServiceImpl patientService) {
         this.patientService = patientService;
     }
-
     @GetMapping("/allMedcin")
     public List<Medcin> afficherLesMedcin(){
         return patientService.afficherLesMedcin();
