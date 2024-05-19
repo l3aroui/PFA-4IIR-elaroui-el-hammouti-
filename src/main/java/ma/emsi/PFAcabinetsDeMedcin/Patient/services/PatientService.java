@@ -12,7 +12,7 @@ public interface PatientService {
 
     public List<Medcin> afficherLesMedcin();
     public List<Medcin> afficherParAddresse(String city,String contry,int codePostal);
-    public Medcin afficherParNomEtPrenom(String nomPrenom);
+    public Medcin afficherParNomEtPrenom(String nom,String prenom);
     public List<Medcin> afficherParSpecialite(String libelle);
 
 }

@@ -6,9 +6,8 @@ import lombok.*;
 import ma.emsi.PFAcabinetsDeMedcin.User.entities.UserApp;
 
 @Entity
-@Builder
 @AllArgsConstructor @NoArgsConstructor
-@Getter
+@Getter @Setter
 public class Medcin extends UserApp {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

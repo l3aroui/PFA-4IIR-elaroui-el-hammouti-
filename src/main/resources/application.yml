@@ -1,21 +1,12 @@
 spring:
-  application:
-    name: PFA-cabinetsDeMedcin
-  jpa:
-    database: POSTGRESQL
-    show-sql: true
-    generate-ddl: false
-    hibernate:
-      ddl-auto: create
-    defer-datasource-initialization: true
-  datasource:
-    url: jdbc:postgresql://localhost:5433/PFA
-    username: postgres
-    password: postgres
-  sql:
-    init:
-      platform: postgres
-      mode: always
-server:
-  port: 8096
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 50MB
+springdoc:
+  default-produces-media-type: application/json
 
+server:
+  servlet:
+    context-path: /api/v1/

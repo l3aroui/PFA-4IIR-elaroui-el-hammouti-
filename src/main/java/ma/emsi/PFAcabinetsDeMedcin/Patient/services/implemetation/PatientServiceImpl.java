@@ -37,9 +37,11 @@ public class PatientServiceImpl implements PatientService {
         else throw new RuntimeException("addresse n'existe pas");
     }
 
+
+
     @Override
-    public Medcin afficherParNomEtPrenom(String nomPrenom) {
-        Medcin medcin=medcinRepos.findByNomPrenom(nomPrenom);
+    public Medcin afficherParNomEtPrenom(String firstname,String lastname) {
+        Medcin medcin=medcinRepos.findByFirstnameAndLastname(firstname,lastname);
         if (medcin.getId()!=null) return medcin;
         else throw new RuntimeException("medcin n'existe pas");
     }

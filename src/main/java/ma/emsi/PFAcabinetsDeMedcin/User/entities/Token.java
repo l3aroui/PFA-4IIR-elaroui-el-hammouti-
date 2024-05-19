@@ -1,17 +1,14 @@
 package ma.emsi.PFAcabinetsDeMedcin.User.entities;
-
-
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
-
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
+@ToString
 public class Token {
     @Id
     @GeneratedValue

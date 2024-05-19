@@ -25,9 +25,9 @@ public class PatientController {
     public List<Medcin> afficherParAddresse(@RequestParam("city") String city,@RequestParam("country") String country,@RequestParam("codePostal") int codePostal){
         return patientService.afficherParAddresse(city,country,codePostal);
     }
-    @GetMapping("/findMedcinByFullName{nomPrenom}")
-    public Medcin afficherParNomEtPrenom(@PathVariable("nomPrenom") String nomPrenom){
-        return patientService.afficherParNomEtPrenom(nomPrenom);
+    @GetMapping("/findMedcinByFullName")
+    public Medcin afficherParNomEtPrenom(@RequestParam("nom") String nom,@RequestParam("prenom") @RequestBody String prenom){
+        return patientService.afficherParNomEtPrenom(nom,prenom);
     }
     @GetMapping("/findMedcinBy{libelle}")
     public List<Medcin> afficherParSpecialite(@PathVariable("libelle") String libelle){
