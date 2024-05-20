@@ -24,7 +24,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-
     private final RoleRepo roleRepo;
     private final PasswordEncoder passwordEncoder;
     private final UserRepo userRepo;
@@ -79,41 +78,12 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        try {
-            System.out.println("Attempting to authenticate user with email: " + request.getEmail());
-
-            var auth = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            request.getEmail(),
-                            request.getPassword()
-                    )
-            );
-
-            var user = (UserApp) auth.getPrincipal();
-
-            if (user.isAccountLocked() || !user.isEnabled()) {
-                throw new RuntimeException("User account is either locked or disabled");
-            }
-
-            System.out.println("Authentication successful for user: " + request.getEmail());
-
-            var claims = new HashMap<String, Object>();
-            claims.put("fullName", user.getFullName());
-
-            var jwtToken = jwtService.generateToken(claims, user);
-            System.out.println(AuthenticationResponse.builder().token(jwtToken).build());
-
-            return AuthenticationResponse.builder().token(jwtToken).build();
-
-        } catch (Exception e) {
-            System.err.println("Authentication failed for user: " + request.getEmail());
-            e.printStackTrace();
-            return null;
-
-
-        }
-
-
+        var auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        var claims = new HashMap<String, Object>();
+        var user = ((UserApp) auth.getPrincipal());
+        claims.put("fullName", user.getFullName());
+        var jwtToken = jwtService.generateToken(claims, (UserApp) auth.getPrincipal());
+        return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
     @Transactional

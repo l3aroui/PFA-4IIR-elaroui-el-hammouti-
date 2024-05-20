@@ -19,8 +19,6 @@ import java.util.Map;
 public class EmailService {
     private final JavaMailSender javaMailSender;
     private final SpringTemplateEngine templateEngine;
-
-
     @Async
     public void sendEmail(String to,String username,EmailTemplateName emailTemplateName,String confirmationUrl,String activationCode,String subject) throws MessagingException {
         String templateName;

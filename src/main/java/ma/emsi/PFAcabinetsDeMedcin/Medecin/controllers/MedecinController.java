@@ -1,6 +1,6 @@
 package ma.emsi.PFAcabinetsDeMedcin.Medecin.controllers;
 
-import ma.emsi.PFAcabinetsDeMedcin.Medecin.DTO.CabinetDTO;
+
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.DTO.DashboardDTO;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Cabinet;
 import ma.emsi.PFAcabinetsDeMedcin.Medecin.Entities.Disponibilite;

@@ -41,4 +41,5 @@ public class PfaCabinetsDeMedcinApplication implements CommandLineRunner {
 		}
 	}
 
+
 }

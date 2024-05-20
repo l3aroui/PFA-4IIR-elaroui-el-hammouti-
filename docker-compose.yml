@@ -23,7 +23,6 @@ services:
 networks:
   spring-demo:
     driver: bridge
-
 volumes:
   postgres:
     driver: local
