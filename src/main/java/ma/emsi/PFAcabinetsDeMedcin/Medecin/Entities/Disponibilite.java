@@ -12,10 +12,11 @@ import java.util.List;
 @Entity
 @Data@NoArgsConstructor@AllArgsConstructor
 public class Disponibilite {
+
     @Id
     private Long id;
     @OneToMany
-    private List<Cabinet> cabs;
+    private List<Cabinet> cabinets;
     @Temporal(TemporalType.TIMESTAMP)
     private Date DateOuverture;
     @JsonFormat(pattern="HH:mm", timezone="GMT+1")

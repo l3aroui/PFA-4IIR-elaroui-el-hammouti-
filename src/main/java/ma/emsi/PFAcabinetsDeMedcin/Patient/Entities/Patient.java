@@ -1,17 +1,16 @@
 package ma.emsi.PFAcabinetsDeMedcin.Patient.Entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ma.emsi.PFAcabinetsDeMedcin.User.entities.UserApp;
 
 import java.util.List;
 
 
 @Entity
-@Builder
+@Getter
+@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patient extends UserApp {
@@ -26,4 +25,5 @@ public class Patient extends UserApp {
     private DossierMedical dossierMedical;
     @OneToMany(mappedBy = "patient")
     private List<RendezVous> rendezVous;
+
 }

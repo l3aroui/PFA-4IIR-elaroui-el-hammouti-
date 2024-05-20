@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/PFA
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: localhost
+    port: 1025
+    username: zakaria
+    password: zakaria
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+application:
+  security:
+    jwt:
+      secret-key: b344dbc626d405fdc9dd5e8c80d67e08f2ec40149ad02bce5d9b110baf6c205abe2da3a3f40e914e1eac2dae9406123f4df82c6a746ae84608f2c500962bc6dc67d4c0598d2718ed73fbdec2cadd5546447db093d2fcceda1ae88de3053a9ed350f158524179ed351d6048ca9036206a1a950d75266963ddce02601700995f6f03723fa82ebf65abc66a48897a2fc8c19da38d2319e140d1a3626d90dd1b9830864534090b3f43a84773beeddc1c08ac63f81c3e4652fffdfb289c724b0c0ffabfd66fabf1cf40a86117090a9ffa3538ab58b01f6dacc0e99dfb31a348f287f6a82aa3d50cbb0ad55c7e5ea7e7803b2f2fdb40f92be62436326a8b1ecf2096a1
+      expiration: 86400000 #
+      refresh-token:
+        expiration: 604800000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+  file:
+    uploads:
+      photos-output-path: ./uploads
+server:
+  port: 8030

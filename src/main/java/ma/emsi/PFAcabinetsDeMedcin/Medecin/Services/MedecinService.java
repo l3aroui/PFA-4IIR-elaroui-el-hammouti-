@@ -11,15 +11,14 @@ import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.DossierMedicalRepo;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.PatientRepos;
 import ma.emsi.PFAcabinetsDeMedcin.Patient.Repositories.RendezVousRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.print.attribute.standard.MediaName;
+
+import org.springframework.stereotype.Service;
+
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class MedecinService {
@@ -135,7 +134,5 @@ public class MedecinService {
         float revenue = this.getRevenueByMedecin(medcin);
         DashboardDTO dashboardDTO = new DashboardDTO(revenue,NmbrRdv,NmbrPatient);
         return dashboardDTO;
-
     }
-
 }

@@ -19,6 +19,7 @@ public class RendezVous {
     private Long id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+
     @ManyToOne
     private Patient patient;
     @OneToOne
