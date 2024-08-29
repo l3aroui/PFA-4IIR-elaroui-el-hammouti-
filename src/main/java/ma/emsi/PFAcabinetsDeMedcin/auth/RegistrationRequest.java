@@ -1,6 +1,5 @@
 package ma.emsi.PFAcabinetsDeMedcin.auth;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -12,7 +11,6 @@ import lombok.Setter;
 
 @Getter @Setter @Builder
 public class RegistrationRequest {
-
     @NotEmpty(message = "Firstname is mandatory")
     @NotBlank(message = "Firstname is mandatory")
     private String firstname;

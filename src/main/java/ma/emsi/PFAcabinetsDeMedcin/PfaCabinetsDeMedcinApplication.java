@@ -30,9 +30,6 @@ public class PfaCabinetsDeMedcinApplication implements CommandLineRunner {
 		this.roleRepo = roleRepo;
 		this.userRepo = userRepo;
 	}
-
-
-
 	@Override
 	public void run(String... args) throws Exception {
 		if (roleRepo.findByName("USER").isEmpty()){
